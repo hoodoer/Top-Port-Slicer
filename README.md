@@ -1,5 +1,5 @@
 # Top-Port-Slicer
-Python script to give you subsets of the nmap "top-ports". For example, I want the 10th to 100th most common TCP ports. Why would you want to skip the top 10 ports? Because you already scanned them :)
+Python script to give you subsets of the nmap "top-ports". For example, I want the 10th to 100th most common TCP ports. Why would you want to skip the first 10 ports in this example? Because you already scanned them :)
 
 Useful on external network assessments when you have a lot of scanning to do. 
 
