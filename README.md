@@ -21,28 +21,28 @@ nmap -p $ENVVARIABLENAME
 This allows you to avoid the copy pasta. Note that this is a new bash instance, so after you run nmap, you probably want to call exit to get back to your original bash context. 
 
 For example:
-root@kaliboxen:~/dev/Top-Port-Slicer# ./topPortSlicer.py -range 5-10 -udp -setEnvVar PORTS2SCAN
-Top 5 to 10 UDP services:
-138,1434,445,135,67,53
-Ports exported to environmental variable: PORTS2SCAN
-Use with nmap, etc, like: nmap -p $PORTS2SCAN
-
-root@kaliboxen:~/dev/Top-Port-Slicer# nmap -sUV -p $PORTS2SCAN localhost
-Starting Nmap 7.70SVN ( https://nmap.org ) at 2019-03-08 14:44 EST
-Nmap scan report for localhost (127.0.0.1)
-Host is up (0.000031s latency).
-Other addresses for localhost (not scanned): ::1
-
-PORT     STATE  SERVICE      VERSION
-53/udp   closed domain
-67/udp   closed dhcps
-135/udp  closed msrpc
-138/udp  closed netbios-dgm
-445/udp  closed microsoft-ds
-1434/udp closed ms-sql-m
-
-Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 0.64 seconds
-root@kaliboxen:~/dev/Top-Port-Slicer# exit
-exit
-root@kaliboxen:~/dev/Top-Port-Slicer# 
+root@kaliboxen:~/dev/Top-Port-Slicer# ./topPortSlicer.py -range 5-10 -udp -setEnvVar PORTS2SCAN\
+Top 5 to 10 UDP services:\
+138,1434,445,135,67,53\
+Ports exported to environmental variable: PORTS2SCAN\
+Use with nmap, etc, like: nmap -p $PORTS2SCAN\
+\
+root@kaliboxen:~/dev/Top-Port-Slicer# nmap -sUV -p $PORTS2SCAN localhost\
+Starting Nmap 7.70SVN ( https://nmap.org ) at 2019-03-08 14:44 EST\
+Nmap scan report for localhost (127.0.0.1)\
+Host is up (0.000031s latency).\
+Other addresses for localhost (not scanned): ::1\
+\
+PORT     STATE  SERVICE      VERSION\
+53/udp   closed domain\
+67/udp   closed dhcps\
+135/udp  closed msrpc\
+138/udp  closed netbios-dgm\
+445/udp  closed microsoft-ds\
+1434/udp closed ms-sql-m\
+\
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .\
+Nmap done: 1 IP address (1 host up) scanned in 0.64 seconds\
+root@kaliboxen:~/dev/Top-Port-Slicer# exit\
+exit\
+root@kaliboxen:~/dev/Top-Port-Slicer# \
