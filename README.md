@@ -5,7 +5,7 @@ Useful on external network assessments when you have a lot of scanning to do. \
  \
 It spits out a comma separated list you can copy into -p arg for nmap or masscan \
  \
-Can also do UDP, but not UDP and TCP at the same time. \ 
+Can also do UDP, but not UDP and TCP at the same time.
 Order based on the /usr/share/nmap/nmap-services file, just like nmap's baked in top-ports functionality \
  \
 Example: \
