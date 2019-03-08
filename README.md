@@ -1,14 +1,14 @@
 # Top-Port-Slicer
-Python script to give you subsets of the nmap "top-ports". For example, I want the 10th to 100th most common TCP ports. Why would you want to skip the first 10 ports in this example? Because you already scanned them :)
-
-Useful on external network assessments when you have a lot of scanning to do. 
-
-It spits out a comma separated list you can copy into -p arg for nmap or masscan
-
-Can also do UDP, but not UDP and TCP at the same time. At the moment. 
-Order based on the /usr/share/nmap/nmap-services file, just like nmap's baked in top-ports functionality
-
-Example:
+Python script to give you subsets of the nmap "top-ports". For example, I want the 10th to 100th most common TCP ports. Why would you want to skip the first 10 ports in this example? Because you already scanned them :) \
+ \
+Useful on external network assessments when you have a lot of scanning to do. \
+ \
+It spits out a comma separated list you can copy into -p arg for nmap or masscan \
+ \
+Can also do UDP, but not UDP and TCP at the same time. \ 
+Order based on the /usr/share/nmap/nmap-services file, just like nmap's baked in top-ports functionality \
+ \
+Example: \
 root@kaliboxen:/root/dev/portSlicer# ./topPortSlicer.py \-range 10\-20 -tcp \
 Starting port rank: 10 \
 Ending port rank: 20 \
