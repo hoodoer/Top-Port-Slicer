@@ -10,7 +10,7 @@ Order based on the /usr/share/nmap/nmap-services file, just like nmap's baked in
  \
 Example: \
 root@kaliboxen:/root/dev/portSlicer# ./topPortSlicer.py \-range 10\-20 -tcp \
-Top 10 to 20 TCP services: 
+Top 10 to 20 TCP services: \
 139,143,53,135,3306,8080,1723,111,995,993,5900 
 
 
