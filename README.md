@@ -19,7 +19,7 @@ nmap \-p $ENVVARIABLENAME
 
 This allows you to avoid the copy pasta. Note that this is a new bash instance, so after you run nmap, you probably want to call exit to get back to your original bash context. 
 
-For example:
+For example: \
 root@kaliboxen:/root/dev/Top-Port-Slicer# ./topPortSlicer.py \-range 5\-10 -udp \-setEnvVar PORTS2SCAN \
 Top 5 to 10 UDP services: \
 138,1434,445,135,67,53 \
