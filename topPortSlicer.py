@@ -14,6 +14,9 @@
 
 import argparse
 import sys
+import time
+import os
+
 
 
 # The list of "top ports" is used from nmap. 
@@ -28,15 +31,32 @@ NMAPSERVICEFILE = "/usr/share/nmap/nmap-services"
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-range", "-r", help="the range of 'top-ports' to generate, START_PORT_RANK-END_PORT_RANK")
-	parser.add_argument("-tcp", action='store_true', help="output top TCP ports (can't use at same time as UDP)")
-	parser.add_argument("-udp", action='store_true', help="output top UDP ports (can't use at the same time as TCP)")
-
+	parser.add_argument("-tcp", "-t", action='store_true', help="output top TCP ports (can't use at same time as UDP)")
+	parser.add_argument("-udp", "-u", action='store_true', help="output top UDP ports (can't use at the same time as TCP)")
+	parser.add_argument("-setEnvVar", "-s", default="NULL", help="(OPTIONAL) export the ports to the provided environment variable name (i.e. pass to nmap with -p $ENVVAR)")
 
 	args = parser.parse_args()
 
-	if len(sys.argv) != 4:
+	# If we have less than 4, something is amiss
+	if len(sys.argv) < 4:
 		parser.print_help()
-		sys.exit()	
+		sys.exit()
+
+
+	# Can't have both
+	if args.tcp and args.udp:
+		print "Error: TCP and UDP are both set, this script can only handle one at a time. \n"
+		parser.print_help()
+		sys.exit()
+
+
+	# Must have one
+	if not args.tcp and not args.udp:
+		print "Error: Neither TCP or UDP are set, you must have one. \n"
+		parser.print_help()
+		sys.exit()
+
+
 
 	rankRange = args.range
 
@@ -44,13 +64,13 @@ if __name__ == '__main__':
 	startRank = int(ports[0])
 	endRank   = int(ports[1])
 
-	print "Starting port rank: " + str(startRank)
-	print "Ending port rank: " + str(endRank)
-
 	if startRank >= endRank:
-		print "The starting port rank was not less than the ending start rank, reduce the derp and try again."
+		print "The starting port rank was not less than the ending port rank, reduce the derp and try again."
 		sys.exit()
 
+	if endRank > 3000:
+		print "Getting desperate are we?"
+		time.sleep(1)
 
 	# Ok, let's get our super nice list of top services from nmap. Gosh darn bless those folks
 	protocolLines = []
@@ -94,4 +114,22 @@ if __name__ == '__main__':
 	# Remove that trailing comma so you appear less moronic
 	portString = portString[:-1]
 	
+
+
+	# Ouput our ports to scan
+	if args.tcp:
+		print "Top " + str(startRank) + " to " + str(endRank) + " TCP services:"
+	elif args.udp:
+		print "Top " + str(startRank) + " to " + str(endRank) + " UDP services:"
+	
+	# For the copy pasta crowd
 	print portString
+
+
+	# Check if we need to export and environmental variable
+	if args.setEnvVar != "NULL":
+		print "Ports exported to environmental variable: " + args.setEnvVar
+		print "Use with nmap, etc, like: nmap -p $" + args.setEnvVar
+		os.putenv(args.setEnvVar, portString)
+		os.system('bash')
+
