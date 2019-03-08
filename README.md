@@ -12,7 +12,7 @@ Example: \
 root@kaliboxen:/root/dev/portSlicer# ./topPortSlicer.py \-range 10\-20 -tcp \
 Starting port rank: 10 \
 Ending port rank: 20 \
-139,143,53,135,3306,8080,1723,111,995,993,5900 \
+139,143,53,135,3306,8080,1723,111,995,993,5900 
 
 
 The optional '\-setEnvVar' parameter takes an environmental variable name. When this option is used, a new bash instance is created with the ports set to the provided environmental variable name. You can then use:
@@ -45,4 +45,4 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 0.64 seconds \
 root@kaliboxen:/root/dev/Top\-Port\-Slicer# exit \
 exit \
-root@kaliboxen:/root/dev/Top\-Port\-Slicer#  \
+root@kaliboxen:/root/dev/Top\-Port\-Slicer#  
