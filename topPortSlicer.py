@@ -130,6 +130,7 @@ if __name__ == '__main__':
 	if args.setEnvVar != "NULL":
 		print "Ports exported to environmental variable: " + args.setEnvVar
 		print "Use with nmap, etc, like: nmap -p $" + args.setEnvVar
+		print "Type 'exit' after running nmap to return to your original bash context"
 		os.putenv(args.setEnvVar, portString)
 		os.system('bash')
 
