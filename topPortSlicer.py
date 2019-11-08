@@ -7,7 +7,6 @@
 # nmap/masscan to hit those later ranges
 #
 # Drew Kirkpatrick
-# www.nopsec.com
 # drew.kirkpatrick@gmail.com
 # @hoodoer
 
