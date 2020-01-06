@@ -44,4 +44,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 0.64 seconds \
 root@kaliboxen:/root/dev/Top\-Port\-Slicer# exit \
 exit \
-root@kaliboxen:/root/dev/Top\-Port\-Slicer#  
+root@kaliboxen:/root/dev/Top\-Port\-Slicer#  \
+\
+\
+Updated for python3
