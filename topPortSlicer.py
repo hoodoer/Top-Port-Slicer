@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # Script to let you slice and dice nmap "top-ports"
 # so you can more intelligentily scan in batches,
@@ -44,14 +44,14 @@ if __name__ == '__main__':
 
 	# Can't have both
 	if args.tcp and args.udp:
-		print "Error: TCP and UDP are both set, this script can only handle one at a time. \n"
+		print ("Error: TCP and UDP are both set, this script can only handle one at a time. \n")
 		parser.print_help()
 		sys.exit()
 
 
 	# Must have one
 	if not args.tcp and not args.udp:
-		print "Error: Neither TCP or UDP are set, you must have one. \n"
+		print ("Error: Neither TCP or UDP are set, you must have one. \n")
 		parser.print_help()
 		sys.exit()
 
@@ -64,11 +64,11 @@ if __name__ == '__main__':
 	endRank   = int(ports[1])
 
 	if startRank >= endRank:
-		print "The starting port rank was not less than the ending port rank, reduce the derp and try again."
+		print ("The starting port rank was not less than the ending port rank, reduce the derp and try again.")
 		sys.exit()
 
 	if endRank > 3000:
-		print "Getting desperate are we?"
+		print ("Getting desperate are we?")
 		time.sleep(1)
 
 	# Ok, let's get our super nice list of top services from nmap. Gosh darn bless those folks
@@ -117,19 +117,19 @@ if __name__ == '__main__':
 
 	# Ouput our ports to scan
 	if args.tcp:
-		print "Top " + str(startRank) + " to " + str(endRank) + " TCP services:"
+		print ("Top " + str(startRank) + " to " + str(endRank) + " TCP services:")
 	elif args.udp:
-		print "Top " + str(startRank) + " to " + str(endRank) + " UDP services:"
+		print ("Top " + str(startRank) + " to " + str(endRank) + " UDP services:")
 	
 	# For the copy pasta crowd
-	print portString
+	print (portString)
 
 
 	# Check if we need to export and environmental variable
 	if args.setEnvVar != "NULL":
-		print "Ports exported to environmental variable: " + args.setEnvVar
-		print "Use with nmap, etc, like: nmap -p $" + args.setEnvVar
-		print "Type 'exit' after running nmap to return to your original bash context"
+		print ("Ports exported to environmental variable: " + args.setEnvVar)
+		print ("Use with nmap, etc, like: nmap -p $" + args.setEnvVar)
+		print ("Type 'exit' after running nmap to return to your original bash context")
 		os.putenv(args.setEnvVar, portString)
 		os.system('bash')
 
